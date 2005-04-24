@@ -40,7 +40,8 @@ porzebne dla programisty c/c++.
 %{__autoheader}
 %{__automake}
 %configure
-%{__make}
+%{__make} \
+	OPTFLAGS='%{rpmcflags}'
 
 %install
 rm -rf $RPM_BUILD_ROOT
