@@ -12,21 +12,21 @@ Patch1:		%{name}-makefile.patch
 URL:		http://www.openldev.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	gtkmm >= 2.6.0
-BuildRequires:	libtool
+BuildRequires:	gtkmm-devel >= 2.6.0
 BuildRequires:	libstdc++-devel
+BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Open Linux Developer is a environment based on the Gtkmm libraries
 that provides a graphical front-end to gcc/g++. It includes the basic
-essentials needed by a c/c++ programmer.
+essentials needed by a C/C++ programmer.
 
 %description -l pl
 Open Linux Developer jest ¶rodowiskiem opartym o bibliotekê Gtkmm,
 bêd±cym graficzn± nak³adk± na gcc/g++. Zawiera podstawowe sk³adniki
-porzebne dla programisty c/c++.
+porzebne dla programisty C/C++.
 
 %prep
 %setup -qn %{name}
