@@ -1,10 +1,10 @@
 diff -aurN openldev.orig/Makefile.am openldev/Makefile.am
---- openldev.orig/Makefile.am	2005-04-10 20:31:15.000000000 +0200
-+++ openldev/Makefile.am	2005-04-24 19:35:59.000000000 +0200
-@@ -1,22 +1,8 @@
- SUBDIRS = pixmaps templates src
+--- openldev.orig/Makefile.am	2005-04-25 03:00:17.000000000 +0200
++++ openldev/Makefile.am	2005-05-02 20:17:55.000000000 +0200
+@@ -1,23 +1,9 @@
+ SUBDIRS = pixmaps templates src help documentation
  
--openldevdocdir = /usr/share/doc/openldev
+-openldevdocdir = $(prefix)/share/doc/openldev
 -openldevdoc_DATA = \
 -	README\
 -	COPYING\
@@ -17,22 +17,23 @@ diff -aurN openldev.orig/Makefile.am openldev/Makefile.am
  openldevdesktopdir = /usr/share/applications
  openldevdesktop_DATA = \
    openldev.desktop
--
+ 
 -EXTRA_DIST = \
 -  $(openldevdoc_DATA) \
 -  $(openldevdesktop_DATA)
-   
+-  
  # Copy all the spec files. Of cource, only one is actually used.
  dist-hook:
+ 	for specfile in *.spec; do \
 diff -aurN openldev.orig/src/Makefile.am openldev/src/Makefile.am
---- openldev.orig/src/Makefile.am	2005-04-13 04:36:08.000000000 +0200
-+++ openldev/src/Makefile.am	2005-04-24 19:36:41.000000000 +0200
-@@ -1,7 +1,7 @@
- INCLUDES =\
+--- openldev.orig/src/Makefile.am	2005-04-25 20:25:25.000000000 +0200
++++ openldev/src/Makefile.am	2005-05-02 20:18:27.000000000 +0200
+@@ -2,7 +2,7 @@
  	$(GTKMM_CFLAGS)
  
+ AM_CPPFLAGS = -DINSTALL_PREFIX=\"$(prefix)\"
 -AM_CXXFLAGS = -Wall -O3
-+AM_CXXFLAGS = $(OPTFLAGS)
++AM_CXXFLAGS = -Wall $(OPTFLAGS)
  
  bin_PROGRAMS = openldev
  
