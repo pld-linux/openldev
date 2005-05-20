@@ -1,12 +1,12 @@
 Summary:	Graphical front-end to gcc/g++
 Summary(pl):	Graficzna nak³adka na gcc/g++
 Name:		openldev
-Version:	0.3.9
+Version:	0.3.10
 Release:	1
 License:	GPL v.2
 Group:		X11/Applications
-Source0:	http://dl.sourceforge.net/openldev/%{name}-%{version}.tar.gz
-# Source0-md5:	04ce4b280b64461de79d7226e66cff67
+Source0:	http://heanet.dl.sourceforge.net/openldev/%{name}-%{version}.tar.gz
+# Source0-md5:	a83671e733787c60be13e91f1a8b7ed7
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-makefile.patch
 URL:		http://www.openldev.org/
