@@ -2,8 +2,8 @@ Summary:	Graphical front-end to gcc/g++
 Summary(pl):	Graficzna nak³adka na gcc/g++
 Name:		openldev
 Version:	0.4.0
-Release:	1
-License:	GPL v.2
+Release:	2
+License:	GPL v2
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/openldev/%{name}-%{version}.tar.gz
 # Source0-md5:	a001ef1766a873e7c0fe59e03b342877
@@ -42,7 +42,8 @@ porzebne dla programisty C/C++.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure
+%configure \
+	--enable-template-all
 %{__make} \
 	OPTFLAGS='%{rpmcflags}'
 
@@ -60,7 +61,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-#%%doc nothing to add, empty files
+%doc AUTHORS TODO
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/%{name}
 %{_desktopdir}/*.desktop
