@@ -9,4 +9,4 @@ diff -aurN openldev.orig/openldev.desktop openldev/openldev.desktop
 +Icon=openldev
  Terminal=false
 -Categories=Application;Development;
-+Categories=GTK;Development;
++Categories=GTK;GNOME;Development;
