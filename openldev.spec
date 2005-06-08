@@ -17,7 +17,9 @@ BuildRequires:	gtkmm-devel >= 2.6.0
 BuildRequires:	gtksourceview-devel >= 1.2.0
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
+BuildRequires:	ncurses-devel
 BuildRequires:	pkgconfig
+BuildRequires:	popt-devel
 BuildRequires:	vte-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
