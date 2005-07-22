@@ -1,12 +1,12 @@
 Summary:	Graphical front-end to gcc/g++
 Summary(pl):	Graficzna nak³adka na gcc/g++
 Name:		openldev
-Version:	0.4.0
-Release:	2
+Version:	0.4.1
+Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/openldev/%{name}-%{version}.tar.gz
-# Source0-md5:	a001ef1766a873e7c0fe59e03b342877
+# Source0-md5:	d22a497e87a6aafdfe663b3cffb1670d
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-makefile.patch
 URL:		http://www.openldev.org/
@@ -15,6 +15,7 @@ BuildRequires:	automake
 BuildRequires:	gnome-vfsmm-devel
 BuildRequires:	gtkmm-devel >= 2.6.0
 BuildRequires:	gtksourceview-devel >= 1.2.0
+BuildRequires:	libglademm-devel
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	vte-devel
