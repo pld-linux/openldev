@@ -5,7 +5,7 @@ Version:	0.4.4
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://heanet.dl.sourceforge.net/openldev/%{name}-%{version}.tar.bz2
+Source0:	http://dl.sourceforge.net/openldev/%{name}-%{version}.tar.bz2
 # Source0-md5:	40b0130c7b505a88cda8ceea3122c87c
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-makefile.patch
@@ -54,7 +54,7 @@ rm -rf $RPM_BUILD_ROOT
 
 ln -sf %{_pixmapsdir}/openldev/openldev48.png \
 	$RPM_BUILD_ROOT%{_pixmapsdir}/openldev.png
-	
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
