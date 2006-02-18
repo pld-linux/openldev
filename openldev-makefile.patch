@@ -1,10 +1,10 @@
 diff -aurN openldev.orig/Makefile.am openldev/Makefile.am
---- openldev.orig/Makefile.am	2005-11-17 06:47:52.000000000 +0100
-+++ openldev/Makefile.am	2005-11-18 23:23:30.000000000 +0100
-@@ -1,14 +1,6 @@
- SUBDIRS = glade menus pixmaps src templates
+--- openldev.orig/Makefile.am	2006-02-03 01:30:16.000000000 +0100
++++ openldev/Makefile.am	2006-02-18 18:46:31.854944992 +0100
+@@ -10,15 +10,6 @@
+ openldevdocdir = \
+ 	$(prefix)/share/doc/openldev
  
- openldevdocdir = $(prefix)/share/doc/openldev
 -openldevdoc_DATA = \
 -	README\
 -	COPYING\
@@ -13,73 +13,100 @@ diff -aurN openldev.orig/Makefile.am openldev/Makefile.am
 -	INSTALL\
 -	NEWS\
 -	TODO
+-
+ openldevdesktopdir = \
+ 	$(prefix)/share/applications
  
- openldevdesktopdir = $(prefix)/share/applications
- openldevdesktop_DATA = \
-@@ -19,6 +11,5 @@
-   openldev.1
+@@ -32,7 +23,6 @@
+ 	openldev.1
  
  EXTRA_DIST = \
--  $(openldevdoc_DATA) \
-   $(openldevdesktop_DATA)\
-   $(openldevman_DATA)
-diff -aurN openldev.orig/src/Makefile.am openldev/src/Makefile.am
---- openldev.orig/src/Makefile.am	2005-11-17 06:47:51.000000000 +0100
-+++ openldev/src/Makefile.am	2005-11-18 23:25:03.000000000 +0100
-@@ -13,7 +13,7 @@
-   $(GNOMEUI_CFLAGS)
+-	$(openldevdoc_DATA)\
+ 	$(openldevdesktop_DATA)\
+ 	$(openldevman_DATA)
  
- AM_CPPFLAGS = -DINSTALL_PREFIX=\"$(prefix)\"
--AM_CXXFLAGS = -Wall -O3
-+AM_CXXFLAGS = -Wall $(OPTFLAGS)
+diff -aurN openldev.orig/openldev/launcher/Makefile.am openldev/openldev/launcher/Makefile.am
+--- openldev.orig/openldev/launcher/Makefile.am	2005-12-22 04:27:26.000000000 +0100
++++ openldev/openldev/launcher/Makefile.am	2006-02-18 18:47:34.272456088 +0100
+@@ -6,7 +6,7 @@
  
- bin_PROGRAMS = openldev
+ AM_CXXFLAGS = \
+ 	-Wall\
+-	-O3
++	$(OPTFLAGS)
  
-diff -aurN openldev.orig/src/makefile-editor/Makefile.am openldev/src/makefile-editor/Makefile.am
---- openldev.orig/src/makefile-editor/Makefile.am	2005-11-17 06:47:51.000000000 +0100
-+++ openldev/src/makefile-editor/Makefile.am	2005-11-18 23:24:08.000000000 +0100
-@@ -11,7 +11,7 @@
-   $(GNOMEUI_CFLAGS)
+ bin_PROGRAMS = \
+ 	openldev_launcher
+diff -aurN openldev.orig/openldev/Makefile.am openldev/openldev/Makefile.am
+--- openldev.orig/openldev/Makefile.am	2005-12-22 04:22:38.000000000 +0100
++++ openldev/openldev/Makefile.am	2006-02-18 18:47:24.649918936 +0100
+@@ -21,7 +21,7 @@
  
- AM_CPPFLAGS = -DINSTALL_PREFIX=\"$(prefix)\"
--AM_CXXFLAGS = -Wall -O3
-+AM_CXXFLAGS = -Wall $(OPTFLAGS)
+ AM_CXXFLAGS = \
+ 	-Wall\
+-	-O3
++	$(OPTFLAGS)
  
- bin_PROGRAMS = openldev_makefile_editor
+ lib_LTLIBRARIES = \
+ 	libopenldev.la
+diff -aurN openldev.orig/openldev/openldev-dialogs/Makefile.am openldev/openldev/openldev-dialogs/Makefile.am
+--- openldev.orig/openldev/openldev-dialogs/Makefile.am	2005-12-22 04:29:41.000000000 +0100
++++ openldev/openldev/openldev-dialogs/Makefile.am	2006-02-18 18:47:42.517202696 +0100
+@@ -14,7 +14,7 @@
  
-diff -aurN openldev.orig/src/openldev-dialogs/Makefile.am openldev/src/openldev-dialogs/Makefile.am
---- openldev.orig/src/openldev-dialogs/Makefile.am	2005-11-17 06:47:52.000000000 +0100
-+++ openldev/src/openldev-dialogs/Makefile.am	2005-11-18 23:24:21.000000000 +0100
-@@ -10,7 +10,7 @@
-   $(GCONF_CFLAGS)
+ AM_CXXFLAGS = \
+ 	-Wall\
+-	-O3
++	$(OPTFLAGS)
  
- AM_CPPFLAGS = -DINSTALL_PREFIX=\"$(prefix)\"
--AM_CXXFLAGS = -Wall -O3
-+AM_CXXFLAGS = -Wall $(OPTFLAGS)
+ noinst_LTLIBRARIES = \
+ 	libdialogs.la
+diff -aurN openldev.orig/openldev/openldev-settings/Makefile.am openldev/openldev/openldev-settings/Makefile.am
+--- openldev.orig/openldev/openldev-settings/Makefile.am	2006-01-19 04:12:35.000000000 +0100
++++ openldev/openldev/openldev-settings/Makefile.am	2006-02-18 18:47:53.126589824 +0100
+@@ -14,8 +14,7 @@
  
- noinst_LTLIBRARIES = libdialogs.la
+ AM_CXXFLAGS = \
+ 	-Wall\
+-	-O3\
+-	-g
++	$(OPTFLAGS)
  
-diff -aurN openldev.orig/src/openldev-settings/Makefile.am openldev/src/openldev-settings/Makefile.am
---- openldev.orig/src/openldev-settings/Makefile.am	2005-11-17 06:47:51.000000000 +0100
-+++ openldev/src/openldev-settings/Makefile.am	2005-11-18 23:24:38.000000000 +0100
-@@ -10,7 +10,7 @@
-   $(GCONF_CFLAGS)
+ noinst_LTLIBRARIES = \
+ 	libsettings.la
+diff -aurN openldev.orig/openldev/openldev-widgets/Makefile.am openldev/openldev/openldev-widgets/Makefile.am
+--- openldev.orig/openldev/openldev-widgets/Makefile.am	2006-02-14 04:41:54.000000000 +0100
++++ openldev/openldev/openldev-widgets/Makefile.am	2006-02-18 18:48:01.481319712 +0100
+@@ -15,7 +15,7 @@
  
- AM_CPPFLAGS = -DINSTALL_PREFIX=\"$(prefix)\"
--AM_CXXFLAGS = -Wall -O3
-+AM_CXXFLAGS = -Wall $(OPTFLAGS)
+ AM_CXXFLAGS = \
+ 	-Wall\
+-	-O3
++	$(OPTFLAGS)
  
- noinst_LTLIBRARIES = libsettings.la
+ noinst_LTLIBRARIES = \
+ 	libwidgets.la
+diff -aurN openldev.orig/plugins/insert-info/Makefile.am openldev/plugins/insert-info/Makefile.am
+--- openldev.orig/plugins/insert-info/Makefile.am	2006-01-28 23:23:06.000000000 +0100
++++ openldev/plugins/insert-info/Makefile.am	2006-02-18 18:48:27.756325304 +0100
+@@ -16,7 +16,7 @@
  
-diff -aurN openldev.orig/src/openldev-widgets/Makefile.am openldev/src/openldev-widgets/Makefile.am
---- openldev.orig/src/openldev-widgets/Makefile.am	2005-11-17 06:47:51.000000000 +0100
-+++ openldev/src/openldev-widgets/Makefile.am	2005-11-18 23:24:51.000000000 +0100
-@@ -11,7 +11,7 @@
-   $(GNOMEUI_CFLAGS)
+ AM_CXXFLAGS = \
+ 	-Wall\
+-	-O3
++	$(OPTFLAGS)
  
- AM_CPPFLAGS = -DINSTALL_PREFIX=\"$(prefix)\"
--AM_CXXFLAGS = -Wall -O3
-+AM_CXXFLAGS = -Wall $(OPTFLAGS)
+ plugindir = $(libdir)/openldev
  
- noinst_LTLIBRARIES = libwidgets.la
+diff -aurN openldev.orig/plugins/makefile-editor/Makefile.am openldev/plugins/makefile-editor/Makefile.am
+--- openldev.orig/plugins/makefile-editor/Makefile.am	2006-01-15 01:36:59.000000000 +0100
++++ openldev/plugins/makefile-editor/Makefile.am	2006-02-18 18:48:19.999504520 +0100
+@@ -16,7 +16,7 @@
+ 
+ AM_CXXFLAGS = \
+ 	-Wall\
+-	-O3
++	$(OPTFLAGS)
+ 
+ imagedir = $(prefix)/share/pixmaps/openldev
  
