@@ -1,12 +1,12 @@
 Summary:	Graphical front-end to gcc/g++
 Summary(pl):	Graficzna nak³adka na gcc/g++
 Name:		openldev
-Version:	0.5.0
+Version:	0.5.5
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/openldev/%{name}-%{version}.tar.bz2
-# Source0-md5:	c07b47372e2847a889c274520f71e00b
+# Source0-md5:	15d79b38039fd9da6865dc10ad8cd87e
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-makefile.patch
 URL:		http://www.openldev.org/
@@ -35,6 +35,9 @@ porzebne dla programisty C/C++.
 %patch0 -p1
 %patch1 -p1
 
+# workaround for hardcoded paths
+sed -i -e 's|/lib/openldev|/%{_lib}/openldev|' openldev/openldev-plugin-engine.cc
+
 %build
 %{__libtoolize}
 %{__aclocal}
@@ -42,7 +45,9 @@ porzebne dla programisty C/C++.
 %{__autoheader}
 %{__automake}
 %configure \
-	--enable-template-all
+	--enable-template-all \
+	--disable-static
+
 %{__make} \
 	OPTFLAGS='%{rpmcflags}'
 
@@ -54,14 +59,24 @@ rm -rf $RPM_BUILD_ROOT
 
 ln -sf %{_pixmapsdir}/openldev/openldev48.png \
 	$RPM_BUILD_ROOT%{_pixmapsdir}/openldev.png
+	
+rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post	-p /sbin/ldconfig
+%postun -p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS TODO
 %attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_libdir}/libopenldev.so*
+%dir %{_libdir}/%{name}
+%attr(755,root,root) %{_libdir}/%{name}/*.so
+%{_libdir}/%{name}/*.la
+%{_libdir}/%{name}/*.plugin
 %{_datadir}/%{name}
 %{_desktopdir}/*.desktop
 %{_pixmapsdir}/%{name}
