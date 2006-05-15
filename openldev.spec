@@ -1,12 +1,12 @@
 Summary:	Graphical front-end to gcc/g++
 Summary(pl):	Graficzna nak³adka na gcc/g++
 Name:		openldev
-Version:	0.6.0
+Version:	0.6.1
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/openldev/%{name}-%{version}.tar.bz2
-# Source0-md5:	2bdf97d1ea4aa25289ce35593948973e
+# Source0-md5:	3657ae908fc5a42fb8c2b93486154c68
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-makefile.patch
 URL:		http://www.openldev.org/
@@ -49,7 +49,7 @@ sed -i -e 's|/lib/openldev|/%{_lib}/openldev|' openldev/openldev-plugin-engine.c
 	--disable-static
 
 %{__make} \
-	OPTFLAGS='%{rpmcflags}'
+	CXXFLAGS='%{rpmcflags}'
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -60,6 +60,7 @@ rm -rf $RPM_BUILD_ROOT
 ln -sf %{_pixmapsdir}/openldev/openldev48.png \
 	$RPM_BUILD_ROOT%{_pixmapsdir}/openldev.png
 	
+rm -rf $RPM_BUILD_ROOT%{_docdir}/%{name}
 rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 
 %clean
