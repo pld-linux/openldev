@@ -1,5 +1,5 @@
 Summary:	Graphical front-end to gcc/g++
-Summary(pl):	Graficzna nak³adka na gcc/g++
+Summary(pl.UTF-8):   Graficzna nakÅ‚adka na gcc/g++
 Name:		openldev
 Version:	1.0
 %define	_rc	rc1
@@ -26,9 +26,9 @@ Open Linux Developer is a environment based on the GTK+2 libraries
 that provides a graphical front-end to gcc/g++. It includes the basic
 essentials needed by a C/C++ programmer.
 
-%description -l pl
-Open Linux Developer jest ¶rodowiskiem opartym o bibliotekê GTK+2,
-bêd±cym graficzn± nak³adk± na gcc/g++. Zawiera podstawowe sk³adniki
+%description -l pl.UTF-8
+Open Linux Developer jest Å›rodowiskiem opartym o bibliotekÄ™ GTK+2,
+bÄ™dÄ…cym graficznÄ… nakÅ‚adkÄ… na gcc/g++. Zawiera podstawowe skÅ‚adniki
 porzebne dla programisty C/C++.
 
 %prep
