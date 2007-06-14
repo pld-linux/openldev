@@ -2,12 +2,11 @@ Summary:	Graphical front-end to gcc/g++
 Summary(pl.UTF-8):	Graficzna nakładka na gcc/g++
 Name:		openldev
 Version:	1.0
-%define	_rc	rc1
-Release:	0.%{_rc}.1
+Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://dl.sourceforge.net/openldev/%{name}-%{version}%{_rc}.tar.bz2
-# Source0-md5:	64cd3b4c6324cc2a1673f66e6a3cd264
+Source0:	http://dl.sourceforge.net/openldev/%{name}-%{version}.tar.bz2
+# Source0-md5:	e5345d18b6f7cafcac85e3ce66b33217
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-makefile.patch
 URL:		http://www.openldev.org/
@@ -64,15 +63,13 @@ ln -sf %{_pixmapsdir}/openldev/openldev48.png \
 rm -rf $RPM_BUILD_ROOT%{_docdir}/%{name}
 rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 
-%find_lang OpenLDev
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post	-p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
-%files -f OpenLDev.lang
+%files
 %defattr(644,root,root,755)
 %doc AUTHORS TODO
 %attr(755,root,root) %{_bindir}/*
