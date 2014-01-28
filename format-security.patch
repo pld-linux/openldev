@@ -1,0 +1,22 @@
+--- openldev/openldev/openldev-utils.cc~	2014-01-28 01:33:29.000000000 +0100
++++ openldev/openldev/openldev-utils.cc	2014-01-28 01:34:43.156773230 +0100
+@@ -36,8 +36,8 @@
+   GtkWidget *dialog;
+   
+   dialog = gtk_message_dialog_new (NULL, GTK_DIALOG_MODAL, type,
+-                                   GTK_BUTTONS_CLOSE, title);
+-  gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog), message);
++                                   GTK_BUTTONS_CLOSE, "%s", title);
++  gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog), "%s", message);
+   
+   gtk_dialog_run (GTK_DIALOG (dialog));
+   gtk_widget_destroy (dialog);
+@@ -52,7 +52,7 @@
+   GtkWidget *dialog;
+   
+   dialog = gtk_message_dialog_new (NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_QUESTION,
+-                                   GTK_BUTTONS_YES_NO, question);
++                                   GTK_BUTTONS_YES_NO, "%s", question);
+   
+   if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_YES)
+   {

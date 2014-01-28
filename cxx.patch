@@ -1,0 +1,107 @@
+--- openldev/openldev/openldev-settings/openldev-makefile-parser.cc~	2007-03-28 17:27:58.000000000 +0200
++++ openldev/openldev/openldev-settings/openldev-makefile-parser.cc	2014-01-28 01:25:12.200110697 +0100
+@@ -18,6 +18,7 @@
+  ***************************************************************************/
+  
+ #include "openldev-makefile-parser.h"
++#include <algorithm>
+ 
+ bool openldev_makefile_buffer_new_variable (MakefileBuffer*, string&);
+ void openldev_makefile_buffer_new_script (MakefileBuffer*, string&);
+--- openldev/openldev/openldev-settings/openldev-project.cc~	2007-03-28 17:27:58.000000000 +0200
++++ openldev/openldev/openldev-settings/openldev-project.cc	2014-01-28 01:26:11.046776937 +0100
+@@ -16,7 +16,7 @@
+  *   Free Software Foundation, Inc.,                                       *
+  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+  ***************************************************************************/
+- 
++#include <cstring>
+ #include "openldev-project.h"
+ 
+ static void openldev_project_settings_get_makefiles (vector<string>&, string);
+--- openldev/openldev/openldev-dialogs/openldev-import-project.cc~	2007-03-28 17:27:58.000000000 +0200
++++ openldev/openldev/openldev-dialogs/openldev-import-project.cc	2014-01-28 01:26:43.320110038 +0100
+@@ -16,7 +16,7 @@
+  *   Free Software Foundation, Inc.,                                       *
+  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+  ***************************************************************************/
+-
++#include <cstring>
+ #include "openldev-import-project.h"
+ 
+ gchar*
+--- openldev/openldev/openldev-dialogs/openldev-new-project.cc~	2007-03-28 17:27:58.000000000 +0200
++++ openldev/openldev/openldev-dialogs/openldev-new-project.cc	2014-01-28 01:27:03.946776555 +0100
+@@ -17,6 +17,7 @@
+  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+  ***************************************************************************/
+ 
++#include <cstring>
+ #include "openldev-new-project.h"
+ 
+ static void openldev_new_project_dialog_populate_combobox (NewProjectDialog*);
+--- openldev/openldev/openldev-widgets/openldev-file-browser.cc~	2007-03-28 17:27:58.000000000 +0200
++++ openldev/openldev/openldev-widgets/openldev-file-browser.cc	2014-01-28 01:27:27.226776385 +0100
+@@ -17,6 +17,7 @@
+  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+  ***************************************************************************/
+ 
++#include <cstring>
+ #include "openldev-file-browser.h"
+ 
+ vector<string> read_directory (const char*, gboolean);
+--- openldev/openldev/openldev-widgets/openldev-status-bar.h~	2007-03-28 17:27:58.000000000 +0200
++++ openldev/openldev/openldev-widgets/openldev-status-bar.h	2014-01-28 01:28:54.740109086 +0100
+@@ -58,17 +58,17 @@
+   \param bar A StatusBar object.
+   \param message The message to show on the status bar.
+ */
+-void openldev_status_bar_set_message (StatusBar *bar, gint bar, gchar *message);
++void openldev_status_bar_set_message (StatusBar *statusbar, gint bar, gchar *message);
+ 
+ /*! Set the current message on the status bar. This message is locked, so other parts of the application cannot edit it. Make sure to unlock the message when you are done! This will append a message on the stack, so when you unlock the message, it will revert to the prior.
+   \param bar A StatusBar object.
+   \param message The message to show on the status bar.
+ */
+-void openldev_status_bar_lock_message (StatusBar *bar, gint bar, gchar *message);
++void openldev_status_bar_lock_message (StatusBar *statusbar, gint bar, gchar *message);
+ 
+ /*! Unlock the status bar message and revert to the prior message. Make sure you do this when locking is no longer necessary!
+   \param bar A StatusBar object.
+ */
+-void openldev_status_bar_unlock_message (StatusBar *bar, gint bar);
++void openldev_status_bar_unlock_message (StatusBar *statusbar, gint bar);
+ 
+ #endif
+--- openldev/openldev/main.cc~	2007-03-28 17:27:58.000000000 +0200
++++ openldev/openldev/main.cc	2014-01-28 01:29:29.063442171 +0100
+@@ -20,6 +20,7 @@
+ #include "openldev.h"
+ #include <glade/glade.h>
+ #include <cstring>
++#include <cstdio>
+ 
+ static void on_destroy (GtkWidget*, gpointer);
+ static void on_find_activate (GtkEntry*, OpenLDev*);
+--- openldev/openldev/launcher/main.cc~	2007-03-28 17:27:58.000000000 +0200
++++ openldev/openldev/launcher/main.cc	2014-01-28 01:30:16.046775164 +0100
+@@ -20,7 +20,8 @@
+ #include <sys/types.h>
+ #include <sys/wait.h>
+ #include <glib.h>
+-#include <stdlib.h>
++#include <cstdlib>
++#include <cstdio>
+ #include <iostream>
+ #include <string>
+ using namespace std;
+--- openldev/openldev/openldev-utils.cc~	2007-03-28 17:27:58.000000000 +0200
++++ openldev/openldev/openldev-utils.cc	2014-01-28 01:30:54.303441554 +0100
+@@ -19,6 +19,7 @@
+ 
+ #include "openldev-utils.h"
+ #include <glade/glade.h>
++#include <cstdlib>
+ 
+ gchar* 
+ openldev_add_prefix (gchar *text)

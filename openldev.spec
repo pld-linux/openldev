@@ -2,22 +2,26 @@ Summary:	Graphical front-end to gcc/g++
 Summary(pl.UTF-8):	Graficzna nakładka na gcc/g++
 Name:		openldev
 Version:	1.0
-Release:	2
+Release:	3
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/openldev/%{name}-%{version}.tar.bz2
 # Source0-md5:	e5345d18b6f7cafcac85e3ce66b33217
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-makefile.patch
+Patch2:		cxx.patch
+Patch3:		format-security.patch
 URL:		http://www.openldev.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-vfs2-devel
 BuildRequires:	gtk+2-devel >= 2.6.0
 BuildRequires:	gtksourceview-devel >= 1.2.0
+BuildRequires:	libgnomeprintui-devel
+BuildRequires:	libgnomeui-devel
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
-BuildRequires:	vte-devel
+BuildRequires:	vte0-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -34,6 +38,8 @@ porzebne dla programisty C/C++.
 %setup -qn %{name}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 # workaround for hardcoded paths
 sed -i -e 's|/lib/openldev|/%{_lib}/openldev|' openldev/openldev-plugin-engine.cc
